@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detalhes do Produto</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#product-details {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Detalhes do Produto</h1>
+  <div id="product-details"></div>
+
+  <script>
+    // Extrair o ID do produto da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    // Obter os detalhes do produto com base no ID fornecido
+    fetch(`https://fakestoreapi.com/products/${productId}`)
+      .then(response => response.json())
+      .then(productData => {
+        const productDetailsContainer = document.getElementById('product-details');
+
+        // Criar elementos para exibir os detalhes do produto
+        const img = document.createElement('img');
+        img.src = productData.image;
+        img.alt = productData.title;
+        productDetailsContainer.appendChild(img);
+
+        const h2 = document.createElement('h2');
+        h2.textContent = productData.title;
+        productDetailsContainer.appendChild(h2);
+
+        const pDescription = document.createElement('p');
+        pDescription.textContent = productData.description;
+        productDetailsContainer.appendChild(pDescription);
+
+        const pPrice = document.createElement('p');
+        pPrice.textContent = `Preço: R$ ${productData.price.toFixed(2)}`;
+        productDetailsContainer.appendChild(pPrice);
+
+        const pRating = document.createElement('p');
+        pRating.textContent = `Classificação: ${productData.rating.rate} (${productData.rating.count} avaliações)`;
+        productDetailsContainer.appendChild(pRating);
+      })
+      .catch(error => {
+        console.log('Ocorreu um erro:', error);
+      });
+  </script>
+</body>
+</html>

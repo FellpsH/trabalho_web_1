@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisa de Produtos</title>
+    <style>
+        /* Estilos para a pesquisa */
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .search-container button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Estilos para os produtos */
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product {
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .product span {
+            font-size: 16px;
+        }
+    </style>
+    <link rel="stylesheet" href="pesquisar.js">
+</head>
+
+<body>
+    <div class="search-container">
+        <input id="search-input" type="text" placeholder="Digite o nome do produto">
+        <button id="search-button">Pesquisar</button>
+    </div>
+
+    <div class="products-container"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
